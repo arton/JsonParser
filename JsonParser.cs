@@ -47,14 +47,14 @@ namespace Art.On
                     return (string)element;
                 case JsonType.@object:
                     var obj = new ExpandoObject();
-                    foreach (var e in element.Descendants())
+                    foreach (var e in element.Elements())
                     {
                         ((IDictionary<string, object>)obj).Add(e.Name.LocalName, ToValue(e));
                     }
                     return obj;
                 case JsonType.array:
                     var list = new List<dynamic>();
-                    foreach (var e in element.Descendants())
+                    foreach (var e in element.Elements())
                     {
                         list.Add(ToValue(e));
                     }
